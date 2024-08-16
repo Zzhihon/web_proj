@@ -23,12 +23,19 @@
 <body>
 
     {% include 'navbar.html' %}
-
+    
+    {% if messages %}
+    {% for message in messages %}
+    <div class="alert">
+        <p class="alert__message">{{message}}</p>
+        <button class="alert__close">x</button>
+    <div>                          
+    {% endfor %}
+    {% endif %}
     {% block content %}
 
     {% endblock content %}
     
-    <p>Footpin</p>
 </body>
 
 </html>

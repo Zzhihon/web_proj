@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from .models import Project
 from .forms import ProjectForm
@@ -14,6 +15,7 @@ def project(request, pk):
     tags = projectObj.tags.all()
     return render(request, 'projects/single-project.html', {'project':projectObj, 'tags':tags})
 
+@login_required(login_url='login')
 def createProject(request):
     form = ProjectForm()
 
